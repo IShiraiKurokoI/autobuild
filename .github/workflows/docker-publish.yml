@@ -78,8 +78,8 @@ jobs:
         with:
           context: .
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.ACTOR }}:latest
-          labels: ${{ env.ACTOR }}:latest
+          tags: ${{ env.ACTOR }}/${{ env.IMAGE_NAME }}:latest
+          labels: ${{ env.ACTOR }}/${{ env.IMAGE_NAME }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
