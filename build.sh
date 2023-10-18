@@ -15,7 +15,8 @@ then # if using git repository
     # reorganize url into https://{$github_user}:{$github_token}@{$github_url}
     GITHUB_URL=$(echo $2 | sed -e 's/https:\/\///g')
     CREDENTIALS=$(echo $GITHUB_USER:$GITHUB_TOKEN@)
-    if [[ $CREDENTIALS == ":@" ]] then
+    if [[ $CREDENTIALS == ":@" ]]
+    then
         CREDENTIALS=""
     fi
     GITHUB_URL=https://$CREDENTIALS$GITHUB_URL
