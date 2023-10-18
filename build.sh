@@ -37,6 +37,7 @@ then # if using git repository
     test -f build-sequence && SPEC_FILE=$(cat build-sequence)
     echo "SPEC_FILE: $SPEC_FILE"
 fi
+fi
 
 # enter loop to build all .spec files
 for SPEC in $SPEC_FILE; do
