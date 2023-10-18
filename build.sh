@@ -21,6 +21,7 @@ then # if using git repository
     fi
     GITHUB_URL=https://$CREDENTIALS$GITHUB_URL
     echo "Cloning from $GITHUB_URL"
+    echo "git clone $2 repo"
     git clone $2 repo
     # Switch to the cloned repository and switch branch
     cd repo
