@@ -56,3 +56,4 @@ for SPEC in $SPEC_FILE; do
     echo "Copying RPMs to output directory"
     cp /root/rpmbuild/RPMS/*/*.rpm /output
 done
+
