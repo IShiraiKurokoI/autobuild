@@ -12,15 +12,15 @@ else if [[ $1 == "--git" ]]
 then # if using git repository
     # Clone git repository
     cd /tmp
-    if $GITHUB_USER != "notconfigured"
+    if [[ $GITHUB_USER != "notconfigured" ]]
     then
         git config --global user.name $GITHUB_USER
     fi
-    if $GITHUB_EMAIL != "notconfigured"
+    if [[ $GITHUB_EMAIL != "notconfigured" ]]
     then
         git config --global user.email $GITHUB_EMAIL
     fi
-    if $GITHUB_ACCESS_TOKEN != "notconfigured"
+    if [[ $GITHUB_ACCESS_TOKEN != "notconfigured" ]]
     then
         git config --global user.password $GITHUB_ACCESS_TOKEN
     fi
