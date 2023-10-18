@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 # If using url:
 if [[ $1 == "--url" ]]
 then
@@ -12,18 +12,14 @@ else if [[ $1 == "--git" ]]
 then # if using git repository
     # Clone git repository
     cd /tmp
-    if [[ $GITHUB_USER != "notconfigured" ]]
-    then
-        git config --global user.name $GITHUB_USER
+    # reorganize url into https://{$github_user}:{$github_token}@{$github_url}
+    GITHUB_URL=$(echo $2 | sed -e 's/https:\/\///g')
+    CREDENTIALS=$(echo $GITHUB_USER:$GITHUB_TOKEN@)
+    if [[ $CREDENTIALS == ":@" ]] then
+        CREDENTIALS=""
     fi
-    if [[ $GITHUB_EMAIL != "notconfigured" ]]
-    then
-        git config --global user.email $GITHUB_EMAIL
-    fi
-    if [[ $GITHUB_ACCESS_TOKEN != "notconfigured" ]]
-    then
-        git config --global user.password $GITHUB_ACCESS_TOKEN
-    fi
+    GITHUB_URL=https://$CREDENTIALS$GITHUB_URL
+    echo "Cloning from $GITHUB_URL"
     git clone $2 repo
     # Switch to the cloned repository and switch branch
     cd repo
