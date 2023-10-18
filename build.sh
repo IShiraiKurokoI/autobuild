@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # If using url:
-if [[$1 == "--url"]]
+if [[ $1 == "--url" ]]
 then
     # Downlaod .spec file for packaging
     cd /root/rpmbuild/SPECS
     curl -o package.spec $2
     SPEC_FILE=package.spec
     echo "SPEC_FILE: $SPEC_FILE"
-else if [[$1 == "--git"]]
+else if [[ $1 == "--git" ]]
 then # if using git repository
     # Clone git repository
     cd /tmp
